@@ -242,6 +242,15 @@ hr {
 	max-width: 64px;
 }
 
+/* Serivces */
+
+.veille .icon-row {
+	padding: 30px 0;
+}
+
+.veille .icon {
+	max-width: 64px;
+}
 
 /* cta */
 

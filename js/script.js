@@ -25,50 +25,43 @@ $( document ).ready(function() {
 
 function validateForm()                                    
 { 
-    var name = document.forms["form_email"]["name"];               
-    var email = document.forms["form_email"]["email"];    
-    var message = document.forms["form_email"]["message"];   
-   
+    var name = document.getElementById("name");               
+    var email = document.getElementById("email");    
+    var message =  document.getElementById("message");   
+    var verif = true;
     if (name.value == "")                                  
     { 
-        document.getElementById('errorname').innerHTML="Veuillez entrez un nom valide";  
-        name.focus(); 
-        return false; 
-    }else{
-        document.getElementById('errorname').innerHTML="";  
+        verif = false; 
     }
        
     if (email.value == "")                                   
     { 
-        document.getElementById('erroremail').innerHTML="Veuillez entrez une adresse mail valide"; 
-        email.focus(); 
-        return false; 
-    }else{
-        document.getElementById('erroremail').innerHTML="";  
+        
+        verif = false; 
     }
    
     if (email.value.indexOf("@", 0) < 0)                 
     { 
-        document.getElementById('erroremail').innerHTML="Veuillez entrez une adresse mail valide"; 
-        email.focus(); 
-        return false; 
+       
+        verif = false; 
     } 
    
     if (email.value.indexOf(".", 0) < 0)                 
     { 
-        document.getElementById('erroremail').innerHTML="Veuillez entrez une adresse mail valide"; 
-        email.focus(); 
-        return false; 
+       
+        verif = false; 
     } 
    
     if (message.value == "")                           
     {
-        document.getElementById('errormsg').innerHTML="Veuillez entrez un message valide"; 
-        message.focus(); 
-        return false; 
-    }else{
-        document.getElementById('errormsg').innerHTML="";  
+        
+        verif = false; 
     }
    
-    return true; 
+	if(verif){
+		document.forms["form_email"].submit();
+	}else{
+		document.getElementById('errormsg').innerHTML="Échec lors de l'envoi du mail";  
+	}
 }
+
